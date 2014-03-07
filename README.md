@@ -33,7 +33,7 @@ php novice migrate
 php novice seed
 
 # Migrate then seed
-php migrate --seed
+php novice migrate --seed
 ```
 
 > __Note:__
