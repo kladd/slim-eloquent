@@ -21,7 +21,7 @@ class Novice {
         echo "usage: php " . $this->args[0] . " <command> [<args>]\n";
     }
 
-    function run()
+    function exec()
     {
         if (count($this->args) <= 1) {
             $this->help();
@@ -46,30 +46,28 @@ class Novice {
     {
         $files = glob(MIGRATIONS_PATH.'/*.php');
 
-        foreach ($files as $file) {
-            require_once($file);
-
-            $class = basename($file, '.php');
-
-            $migration = new $class;
-            $migration->run();
-        }
+        $this->run($files);
     }
 
     function runSeed()
     {
         $files = glob(SEEDS_PATH.'/*.php');
 
+        $this->run($files);
+    }
+    
+    private function run($files)
+    {
         foreach ($files as $file) {
             require_once($file);
 
             $class = basename($file, '.php');
 
-            $migration = new $class;
-            $migration->run();
+            $obj = new $class;
+            $obj->run();
         }
     }
 }
 
 $novice = new Novice($argv);
-$novice->run();
+$novice->exec();
