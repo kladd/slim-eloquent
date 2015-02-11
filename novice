@@ -18,7 +18,14 @@ class Novice {
 
     function help()
     {
-        echo "usage: php " . $this->args[0] . " <command> [<args>]\n";
+        echo "\n";
+        echo "syntaxis: php novice <command> [<args>] \n\n";
+
+        echo "Commands: \n";
+        echo "php novice --help                  -->   Displays the help menu. \n";
+        echo "php novice migrate                 -->   Migrate the database. \n";
+        echo "php novice seed                    -->   Seed the database tables. \n";
+        echo "php novice novice migrate --seed   -->   Migrate and seed the database. \n\n";
     }
 
     function exec()
